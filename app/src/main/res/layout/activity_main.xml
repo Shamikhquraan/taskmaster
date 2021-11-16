@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button_addTask"
+        android:id="@+id/goAddTask"
         android:layout_width="103dp"
         android:layout_height="58dp"
         android:text="Add Task"
@@ -19,18 +19,18 @@
         app:layout_constraintVertical_bias="0.17" />
 
     <Button
-        android:id="@+id/button_allTasks"
+        android:id="@+id/goAllTask"
         android:layout_width="105dp"
         android:layout_height="60dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="72dp"
-        android:text="All Tasks"
+        android:text="All Task"
         app:layout_constraintBottom_toTopOf="@+id/button_task2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toEndOf="@+id/button_settings"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toEndOf="@+id/goPageSettings"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.982" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -79,7 +79,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toEndOf="@+id/button_addTask"
+        app:layout_constraintStart_toEndOf="@+id/goAddTask"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.158" />
 
@@ -98,20 +98,22 @@
         android:id="@+id/button_task3"
         android:layout_width="107dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="76dp"
         android:text="shamikhQuraan"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="176dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button_settings"
+        android:id="@+id/goPageSettings"
         android:layout_width="109dp"
         android:layout_height="60dp"
+        android:layout_marginStart="88dp"
         android:layout_marginBottom="84dp"
         android:text="Settings"
         app:layout_constraintBottom_toTopOf="@+id/button_task3"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="158dp" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
