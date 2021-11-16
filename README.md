@@ -18,6 +18,6 @@
 
 ## lab27:
 
-### Ther other pagess in apllication:
+### Ther other page in apllication:
 
 ![](Android.png)
