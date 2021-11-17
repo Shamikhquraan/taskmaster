@@ -11,31 +11,29 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        String body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis massa, elementum a nibh sed, sodales posuere nunc. Vivamus eget ante malesuada, fermentum tellus eget, dignissim enim. Duis felis enim, facilisis in tortor eget, pellentesque tristique dolor. ";
+        TaskDataBase db = TaskDataBase.getInstance(this);
+        TaskDao taskDao = db.taskDao();
+        List<Task> tasksDB = taskDao.getAll();
         RecyclerView recyclerView = findViewById(R.id.RV_main);
-        List tasks = new ArrayList<>();
-        Task task1 = new Task("Title: Take A Shower", body, "State: New" );
-        Task task2 = new Task("Title: BreakFast", body, "State: Assigned" );
-        Task task3 = new Task("Title: Shopping", body, "State: In progress" );
-        Task task4 = new Task("Title: Fix My car", body, "State: Complete" );
 
-        tasks.add(task1);
-        tasks.add(task2);
-        tasks.add(task3);
-        tasks.add(task4);
+        //String body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis massa, elementum a nibh sed, sodales posuere nunc. Vivamus eget ante malesuada, fermentum tellus eget, dignissim enim. Duis felis enim, facilisis in tortor eget, pellentesque tristique dolor. ";
+        // List tasks = new ArrayList<>();
+        // Task task1 = new Task("Title: Take A Shower", body, "State: New" );
+        //Task task2 = new Task("Title: BreakFast", body, "State: Assigned" );
+        // Task task3 = new Task("Title: Shopping", body, "State: In progress" );
+        // Task task4 = new Task("Title: Fix My car", body, "State: Complete" );
+        // tasks.add(task1);
+        // tasks.add(task2);
+        // tasks.add(task3);
+        // tasks.add(task4);
 
-        TaskAdapter taskAdapter = new TaskAdapter(tasks, this);
+        TaskAdapter taskAdapter = new TaskAdapter(tasksDB, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.canScrollVertically();
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -50,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userName = sharedPreferences.getString("userName","User");
         userNameView.setText(userName+"' Tasks");
-
         goAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
