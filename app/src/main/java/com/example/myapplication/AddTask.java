@@ -9,10 +9,10 @@ public class AddTask extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-        Button addedbutton = (Button) findViewById(R.id.addedbutton);
-        addedbutton.setOnClickListener(new  View.OnClickListener(){
+        Button AddButton = (Button) findViewById(R.id.AddButton);
+        AddButton.setOnClickListener(new  View.OnClickListener(){
             public void onClick(View v){
-                Toast.makeText(getApplicationContext(), "Task Added !",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Task Added",Toast.LENGTH_LONG).show();
             }
         });
     }

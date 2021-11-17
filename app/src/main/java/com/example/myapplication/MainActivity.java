@@ -1,5 +1,9 @@
 package com.example.myapplication;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,21 +11,46 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis massa, elementum a nibh sed, sodales posuere nunc. Vivamus eget ante malesuada, fermentum tellus eget, dignissim enim. Duis felis enim, facilisis in tortor eget, pellentesque tristique dolor. ";
+        RecyclerView recyclerView = findViewById(R.id.RV_main);
+        List tasks = new ArrayList<>();
+        Task task1 = new Task("Title: Take A Shower", body, "State: New" );
+        Task task2 = new Task("Title: BreakFast", body, "State: Assigned" );
+        Task task3 = new Task("Title: Shopping", body, "State: In progress" );
+        Task task4 = new Task("Title: Fix My car", body, "State: Complete" );
+
+        tasks.add(task1);
+        tasks.add(task2);
+        tasks.add(task3);
+        tasks.add(task4);
+
+        TaskAdapter taskAdapter = new TaskAdapter(tasks, this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.canScrollVertically();
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(taskAdapter);
+
         Button goAddTask = MainActivity.this.findViewById(R.id.goAddTask);
         Button goAllTask = MainActivity.this.findViewById(R.id.goAllTask);
         Button goPageSettings = MainActivity.this.findViewById(R.id.goPageSettings);
-        Button task1 = MainActivity.this.findViewById(R.id.button_task1);
-        Button task2 = MainActivity.this.findViewById(R.id.button_task2);
-        Button task3 = MainActivity.this.findViewById(R.id.button_task3);
+
         TextView userNameView  = findViewById(R.id.home_page_userName);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userName = sharedPreferences.getString("userName","User");
         userNameView.setText(userName+"' Tasks");
+
         goAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,27 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(goToAllTasksActivity);
             }
         });
-        task1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String taskName = task1.getText().toString();
-                clickTask(taskName);
-            }
-        });
-        task2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String taskName = task2.getText().toString();
-                clickTask(taskName);
-            }
-        });
-        task3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String taskName = task3.getText().toString();
-                clickTask(taskName);
-            }
-        });
+
         goPageSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,10 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(settingsIntent);
             }
         });
+
     }
-    private void clickTask(String taskName) {
-        Intent taskDetailsIntent = new Intent(MainActivity.this, DetailsTask.class);
-        taskDetailsIntent.putExtra("taskName",taskName);
-        startActivity(taskDetailsIntent);
-    }
+
 }

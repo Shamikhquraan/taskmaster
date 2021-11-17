@@ -1,7 +1,5 @@
 package com.example.myapplication;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,9 +12,9 @@ public class SettingTask extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_task);
-        Button saveNameOfUser = findViewById(R.id.button_save_name);
-        EditText userNameField  = findViewById(R.id.input_user_name);
-        saveNameOfUser.setOnClickListener(new View.OnClickListener() {
+        Button saveName= findViewById(R.id.save_name);
+        EditText userNameField  = findViewById(R.id.user_name);
+        saveName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String userName = userNameField.getText().toString();
