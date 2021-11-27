@@ -8,30 +8,35 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.amplifyframework.AmplifyException;
+import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.core.Amplify;
+
 import java.util.List;
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        try {
+            // Add these lines to add the AWSApiPlugin plugins
+            Amplify.addPlugin(new AWSApiPlugin());
+            Amplify.configure(getApplicationContext());
+
+            Log.i("MyAmplifyApp", "Initialized Amplify");
+        } catch (AmplifyException error) {
+            Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
+        }
         TaskDataBase db = TaskDataBase.getInstance(this);
         TaskDao taskDao = db.taskDao();
         List<Task> tasksDB = taskDao.getAll();
         RecyclerView recyclerView = findViewById(R.id.RV_main);
 
-        //String body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras felis massa, elementum a nibh sed, sodales posuere nunc. Vivamus eget ante malesuada, fermentum tellus eget, dignissim enim. Duis felis enim, facilisis in tortor eget, pellentesque tristique dolor. ";
-        // List tasks = new ArrayList<>();
-        // Task task1 = new Task("Title: Take A Shower", body, "State: New" );
-        //Task task2 = new Task("Title: BreakFast", body, "State: Assigned" );
-        // Task task3 = new Task("Title: Shopping", body, "State: In progress" );
-        // Task task4 = new Task("Title: Fix My car", body, "State: Complete" );
-        // tasks.add(task1);
-        // tasks.add(task2);
-        // tasks.add(task3);
-        // tasks.add(task4);
 
         TaskAdapter taskAdapter = new TaskAdapter(tasksDB, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

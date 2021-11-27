@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2022-11-27T18:00:03.179Z",
+      "keyDescription": "shamikhquraan"
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    },
+    "apiName": "amplifyDatasource",
+    "gqlSchemaPath": "C:\\Users\\Shamikh Qu\\AndroidStudioProjects\\taskmaster\\taskmaster\\amplify\\backend\\api\\amplifyDatasource\\schema.graphql",
+    "additionalAuthTypes": []
+  }
+}

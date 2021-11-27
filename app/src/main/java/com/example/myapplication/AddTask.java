@@ -2,10 +2,16 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Task;
+
 public class AddTask extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +27,16 @@ public class AddTask extends AppCompatActivity {
         addTask.setOnClickListener(new  View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Task task = new Task(title.getText().toString(),body.getText().toString(),state.getText().toString());
-                taskDao.insert(task);
+                Task task = Task.builder()
+                        .title("My first todo")
+                        .body("todo description")
+                        .state("todo description")
+                        .build();
+                Amplify.API.mutate(
+                        ModelMutation.create(task),
+                        response -> Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getId()),
+                        error -> Log.e("MyAmplifyApp", "Create failed", error)
+                );
                 Toast.makeText(getApplicationContext(), "Task Added !",Toast.LENGTH_LONG).show();
                 Intent mainIntent = new Intent(AddTask.this, MainActivity.class);
                 startActivity(mainIntent);
