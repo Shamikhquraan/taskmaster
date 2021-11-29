@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
 
@@ -22,22 +20,22 @@ public class AddTask extends AppCompatActivity {
         body = findViewById(R.id.taskDescText);
         state = findViewById(R.id.taskStateText);
         Button addTask = findViewById(R.id.addTask);
-        TaskDataBase db = TaskDataBase.getInstance(this);
-        TaskDao taskDao = db.taskDao();
         addTask.setOnClickListener(new  View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Task task = Task.builder()
-                        .title("My first todo")
-                        .body("todo description")
-                        .state("todo description")
+           // AddToDataBase
+                Task item = Task.builder()
+                        .title(title.getText().toString())
+                        .body(body.getText().toString())
+                        .state(state.getText().toString())
                         .build();
-                Amplify.API.mutate(
-                        ModelMutation.create(task),
-                        response -> Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getId()),
-                        error -> Log.e("MyAmplifyApp", "Create failed", error)
+                Amplify.DataStore.save(
+                        item,
+                        success -> Log.i("Amplify", "Saved item: " + success.item().getId()),
+                        error -> Log.e("Amplify", "Could not save item to DataStore", error)
                 );
-                Toast.makeText(getApplicationContext(), "Task Added !",Toast.LENGTH_LONG).show();
+
+                Toast.makeText(getApplicationContext(), "Task Added",Toast.LENGTH_LONG).show();
                 Intent mainIntent = new Intent(AddTask.this, MainActivity.class);
                 startActivity(mainIntent);
             }

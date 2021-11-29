@@ -24,3 +24,9 @@
 
 ## lab29:
 ![](lab29.png)
+
+
+## lab32:
+### After Adding To DB , the Tasks that u added u will see it at TaskBar At Home pages .
+
+![](lab32.png)
