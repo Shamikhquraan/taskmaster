@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.amplifyframework.datastore.generated.model.Task;
 import java.util.ArrayList;
 import java.util.List;
+
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
     List<Task> tasks = new ArrayList<>();
     Context context;
@@ -16,6 +18,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         this.tasks = tasks;
         this.context = context;
     }
+
     public static class TaskViewHolder extends RecyclerView.ViewHolder{
         Task task;
         View itemView;
@@ -24,6 +27,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             this.itemView = itemView;
         }
     }
+
     @NonNull
     @Override
     public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,28 +35,27 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         TaskViewHolder taskViewHolder=new TaskViewHolder(view);
         return taskViewHolder;
     }
+
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
         holder.task = tasks.get(position);
         TextView title = holder.itemView.findViewById(R.id.fragment_title);
         TextView body = holder.itemView.findViewById(R.id.fragment_body);
         TextView state= holder.itemView.findViewById(R.id.fragment_state);
-        title.setText(holder.task.title);
-        body.setText(holder.task.body);
-        state.setText(holder.task.state);
+        title.setText(holder.task.getTitle());
+        body.setText(holder.task.getBody());
+        state.setText(holder.task.getState());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent taskDetailsIntent = new Intent(context, DetailsTask.class);
-                taskDetailsIntent.putExtra("taskName",holder.task.title);
+                taskDetailsIntent.putExtra("taskName",holder.task.getTitle());
                 context.startActivity(taskDetailsIntent);
             }
         });
-
     }
     @Override
     public int getItemCount() {
         return tasks.size();
     }
-
 }
