@@ -30,3 +30,9 @@
 ### After Adding To DB , the Tasks that u added u will see it at TaskBar At Home pages .
 
 ![](lab32.png)
+
+
+## lab33:
+### CReating model , schema , u will adding to data base .. u will save at api's an also get from it  After Adding To DB , the Tasks that u added u will see it at TaskBar At Home pages .
+
+![](lab32.png)

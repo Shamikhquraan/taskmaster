@@ -28,22 +28,39 @@ android {
 }
 
 dependencies {
-    implementation 'com.amplifyframework:core:1.30.0'
-    implementation 'com.amplifyframework:aws-api:1.30.0'
-    implementation 'com.amplifyframework:aws-datastore:1.30.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
-    implementation 'androidx.constraintlayout:constraintlayout-solver:2.0.4'
-    testImplementation 'junit:junit:4.+'
+
+    // Support for Java 8 features
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+
+    implementation 'com.amplifyframework:aws-api:1.30.0'
+    implementation 'com.amplifyframework:aws-datastore:1.30.0'
+
     def room_version = "2.3.0"
-    implementation "androidx.room:room-runtime:$room_version"
+
+    implementation 'androidx.room:room-runtime:2.3.0'
     annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // optional - RxJava2 support for Room
     implementation "androidx.room:room-rxjava2:$room_version"
+
+    // optional - RxJava3 support for Room
     implementation "androidx.room:room-rxjava3:$room_version"
+
+    // optional - Guava support for Room, including Optional and ListenableFuture
     implementation "androidx.room:room-guava:$room_version"
+
+    // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
-    implementation "androidx.room:room-paging:2.4.0-beta01"
+
+    // optional - Paging 3 Integration
+    implementation "androidx.room:room-paging:2.4.0-beta02"
 }
