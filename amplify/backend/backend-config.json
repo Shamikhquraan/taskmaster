@@ -2,7 +2,7 @@
   "api": {
     "amplifyDatasource": {
       "service": "AppSync",
-      "providerPlugin": "awscloudformation",
+      "providerPlugin": "conformation",
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [],
@@ -11,11 +11,25 @@
             "apiKeyConfig": {
               "apiKeyExpirationDays": 365,
               "apiKeyExpirationDate": "2022-11-27T18:00:03.179Z",
-              "description": "shamikhquraan"
+              "description": "shamanism"
             }
           }
         }
       }
+    }
+  },
+  "hosting": {
+    "amplifying": {
+      "service": "amplifying",
+      "providerPlugin": "conformation",
+      "type": "manual"
+    }
+  },
+  "function": {
+    "graphQlLambdaAuthorizer226fb5bc": {
+      "build": true,
+      "providerPlugin": "conformation",
+      "service": "Lambda"
     }
   }
 }

@@ -3,10 +3,9 @@
   "serviceConfiguration": {
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "expirationTime": 365,
-      "apiKeyExpirationDate": "2022-11-27T18:00:03.179Z",
-      "keyDescription": "shamikhquraan"
+      "mode": "AWS_LAMBDA",
+      "lambdaFunction": "graphQlLambdaAuthorizer226fb5bc",
+      "ttlSeconds": "900"
     },
     "conflictResolution": {
       "defaultResolutionStrategy": {
@@ -14,7 +13,7 @@
       }
     },
     "apiName": "amplifyDatasource",
-    "gqlSchemaPath": "C:\\Users\\Shamikh Qu\\AndroidStudioProjects\\taskmaster\\taskmaster\\amplify\\backend\\api\\amplifyDatasource\\schema.graphql",
+    "gqlSchemaPath": "C:\\Users\\Shamikh Qu\\AndroidStudioProjects\\sham1\\taskmaster\\amplify\\backend\\api\\amplifyDatasource\\schema.graphql",
     "additionalAuthTypes": []
   }
 }
