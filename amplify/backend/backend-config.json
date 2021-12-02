@@ -1,35 +1,24 @@
 {
   "api": {
-    "amplifyDatasource": {
+    "taskmaster": {
       "service": "AppSync",
-      "providerPlugin": "conformation",
+      "providerPlugin": "awscloudformation",
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2022-11-27T18:00:03.179Z",
-              "description": "shamanism"
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
             }
-          }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
         }
       }
-    }
-  },
-  "hosting": {
-    "amplifying": {
-      "service": "amplifying",
-      "providerPlugin": "conformation",
-      "type": "manual"
-    }
-  },
-  "function": {
-    "graphQlLambdaAuthorizer226fb5bc": {
-      "build": true,
-      "providerPlugin": "conformation",
-      "service": "Lambda"
     }
   }
 }

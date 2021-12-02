@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="goAllTask" type="id" />
+    <item name="tasksview" type="id">1</item>
+    <item name="teamname" type="id" />
+    <item name="nameLabel" type="id" />
+    <item name="buttonone" type="id" />
+    <item name="buttontwo" type="id" />
+    <item name="settings" type="id" />
+    <item name="titletext" type="id" />
+    <item name="state" type="id" />
+    <item name="Body" type="id" />
+    <item name="body" type="id" />
+</resources>
