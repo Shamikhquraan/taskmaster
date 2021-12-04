@@ -1,100 +1,84 @@
 package com.example.myapplication;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.amplifyframework.datastore.generated.model.Team;
 
-public class AddTask extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
+public class AddTask extends AppCompatActivity {
+    private Spinner teamSpinner;
+    private List<Team> teams =  new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
-        Task item = Task.builder()
-                .title("Lorem ipsum dolor sit amet")
-                .body("Lorem ipsum dolor sit amet")
-                .state("Lorem ipsum dolor sit amet")
-                .teamId("a3f4095e-39de-43d2-baf4-f8c16f0f6f4d")
-                .build();
-        Amplify.DataStore.save(
-                item,
-                success -> Log.i("Amplify", "Saved item: " + success.item().getId()),
-                error -> Log.e("Amplify", "Could not save item to DataStore", error)
-        );
+        EditText title,body,state;
+        title = findViewById(R.id.taskTitle);
+        body = findViewById(R.id.taskDescription);
+        state = findViewById(R.id.taskState);
+        Button addTask = findViewById(R.id.button_addTask_activity_addTask);
 
 
-        Spinner s = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.items, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        s.setAdapter(adapter);
 
 
-        Button addButton = (Button) findViewById(R.id.addTask);
-        TextView title = (TextView) findViewById(R.id.taskTitleText);
-        TextView desc = (TextView) findViewById(R.id.taskDescText);
+// for create spinner
+        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item,
+                new String[]{"Team 1", "Team 2", "Team 3"});
+        teamSpinner = findViewById(R.id.teamSpinner);
+        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        teamSpinner.setAdapter(dataAdapter2);
 
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                String titletaken = title.getText().toString();
-                String desctaken = desc.getText().toString();
-                String team = s.getSelectedItem().toString();
-
-                Amplify.DataStore.query(
-                        Team.class, Team.NAME.contains(team),
-                        items -> {
-                            while (items.hasNext()) {
-                                Team item = items.next();
-                                Task item1 = Task.builder().title(titletaken).body(desctaken).state("Active").teamId(item.getId()).build();
-                                Amplify.DataStore.save(
-                                        item1,
-                                        success -> Log.i("COMO", "Saved item: "),
-                                        error -> Log.e("Amplify", "Could not save item to DataStore", error)
-                                );
-                                Log.i("EMAM", "Id was stored ");
-                                Log.i("Amplify", "Id " + item.getId());
-                            }
-                        },
-                        failure -> Log.e("Amplify", "Could not query DataStore", failure)
-                );
+//        TaskDataBase db = TaskDataBase.getInstance(this);
+//        TaskDao taskDao = db.taskDao();
 
 
-                Toast.makeText(getApplicationContext(), "Task Added", Toast.LENGTH_LONG).show();
-                finish();
-            }
-        });
+        getTeams();
 
-    }
+        addTask.setOnClickListener(new  View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+//                Task task = new Task(title.getText().toString(),body.getText().toString(),state.getText().toString());
+//                taskDao.insert(task);
 
-    public void back(View view) {
-        this.finish();
 
-    }
+                switch(teamSpinner.getSelectedItem().toString()){
+                    case "Team 1":
+                        Task task = Task.builder().title(title.getText().toString()).body(body.getText().toString()).state(state.getText().toString()).teamId(teams.get(2).getId()).build();
+                        saveToAPI(task);
+                        saveToDatastore(task);
+                        break;
+                    case "Team 2":
+                        Task task2 = Task.builder().title(title.getText().toString()).body(body.getText().toString()).state(state.getText().toString()).teamId(teams.get(1).getId()).build();
+                        saveToAPI(task2);
+                        saveToDatastore(task2);
+                        break;
+                    case "Team 3":
+                        Task task3 = Task.builder().title(title.getText().toString()).body(body.getText().toString()).state(state.getText().toString()).teamId(teams.get(0).getId()).build();
+                        saveToAPI(task3);
+                        saveToDatastore(task3);
+                        break;
+                }
 
-}
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_add_task);
-//        EditText title,body,state;
-//        title = findViewById(R.id.taskTitleText);
-//        body = findViewById(R.id.taskDescText);
-//        state = findViewById(R.id.taskStateText);
-//        Button addTask = findViewById(R.id.addTask);
-//        addTask.setOnClickListener(new  View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//           // AddToDataBase
+                // add Task to data base
 //                Task item = Task.builder()
 //                        .title(title.getText().toString())
 //                        .body(body.getText().toString())
@@ -105,12 +89,40 @@ public class AddTask extends AppCompatActivity {
 //                        success -> Log.i("Amplify", "Saved item: " + success.item().getId()),
 //                        error -> Log.e("Amplify", "Could not save item to DataStore", error)
 //                );
-//
-//                Toast.makeText(getApplicationContext(), "Task Added",Toast.LENGTH_LONG).show();
-//                Intent mainIntent = new Intent(AddTask.this, MainActivity.class);
-//                startActivity(mainIntent);
-//            }
-//        });
-//    }
 
 
+
+                Toast.makeText(getApplicationContext(), "Task Added",Toast.LENGTH_LONG).show();
+//                finish();
+                Intent mainIntent = new Intent(AddTask.this, MainActivity.class);
+                startActivity(mainIntent);
+            }
+        });
+    }
+    private void getTeams() {
+        Amplify.API.query(
+                ModelQuery.list(Team.class),
+                response -> {
+                    for (Team team : response.getData()) {
+                        this.teams.add(team);
+                        Log.i("MyAmplifyApp", team.getName());
+                    }
+                },
+                error -> Log.e("MyAmplifyApp", "Query failure", error)
+        );
+    }
+
+    public void saveToAPI(Task task){
+        Amplify.API.mutate(ModelMutation.create(task),
+                success -> Log.i("Tutorial", "Saved item: " + success.getData()),
+                error -> Log.e("Tutorial", "Could not save item to API", error)
+        );
+    }
+
+    public void saveToDatastore(Task task){
+        Amplify.DataStore.save(task,
+                success -> Log.i("Tutorial", "Saved item: " + success.item()),
+                error -> Log.e("Tutorial", "Could not save item to DataStore", error)
+        );
+    }
+}
