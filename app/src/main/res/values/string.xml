@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="items" >
+        <item>Team one</item>
+        <item>Team two</item>
+        <item>Team three</item>
+    </string-array>
+</resources>
