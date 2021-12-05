@@ -17,14 +17,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/taskTitle"
+        android:id="@+id/titlePlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="My Task"
+        android:text="Task feild.."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -46,29 +46,29 @@
         android:layout_marginTop="28dp"
         android:text="Task Description"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/titlePlace" />
 
     <EditText
-        android:id="@+id/taskDescription"
+        android:id="@+id/DescPace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Do something"
+        android:text="write Desc .."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/button_addTask_activity_addTask"
+        android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
         android:layout_marginTop="188dp"
-        android:text="Add Task"
+        android:text="+ Add Task"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/DescPace" />
 
     <TextView
         android:id="@+id/textView5"
@@ -78,7 +78,7 @@
         android:layout_marginTop="44dp"
         android:text="Total tasks: 0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_addTask_activity_addTask" />
+        app:layout_constraintTop_toBottomOf="@+id/addButton" />
 
     <TextView
         android:id="@+id/textView6"
@@ -88,10 +88,10 @@
         android:layout_marginTop="20dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/DescPace" />
 
     <EditText
-        android:id="@+id/taskState"
+        android:id="@+id/StatePlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -106,9 +106,9 @@
         android:id="@+id/teamSpinner"
         android:layout_width="222dp"
         android:layout_height="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_addTask_activity_addTask"
+        app:layout_constraintBottom_toTopOf="@+id/addButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskState" />
+        app:layout_constraintTop_toBottomOf="@+id/StatePlace" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

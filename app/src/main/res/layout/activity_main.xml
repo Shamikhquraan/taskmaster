@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button_addTask"
+        android:id="@+id/button_addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.521" />
 
     <Button
-        android:id="@+id/button_allTasks"
+        android:id="@+id/button_allButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -45,7 +45,7 @@
         android:layout_width="251dp"
         android:layout_height="36dp"
         android:layout_marginTop="412dp"
-        android:text="User's Tasks"
+        android:text="Account"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
@@ -57,7 +57,7 @@
         android:layout_width="123dp"
         android:layout_height="41dp"
         android:layout_marginTop="40dp"
-        android:text="My Tasks"
+        android:text="My Tasks:"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.281"
@@ -65,13 +65,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button_settings"
+        android:id="@+id/button_settingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Settings"
-        app:layout_constraintEnd_toStartOf="@+id/button_allTasks"
+        app:layout_constraintEnd_toStartOf="@+id/button_allButton"
         app:layout_constraintHorizontal_bias="0.551"
-        app:layout_constraintStart_toEndOf="@+id/button_addTask"
+        app:layout_constraintStart_toEndOf="@+id/button_addButton"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <androidx.recyclerview.widget.RecyclerView
