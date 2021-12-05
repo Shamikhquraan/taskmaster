@@ -30,3 +30,19 @@
 ### After Adding To DB , the Tasks that u added u will see it at TaskBar At Home pages .
 
 ![](lab32.png)
+
+
+## lab33:
+
+### Build & Deploy TaskMaster to Android Using DynamoDB
+ ,  OverView allow users to keep track of tasks to be done and their status.
+ ### Made , 
+ relationShip between tow table Task with Team and deploay them with each Other.
+
+  ![](lab33.png)
+
+ ### Tables :
+
+ ![](13.PNG)
+
+  ![](133.PNG)

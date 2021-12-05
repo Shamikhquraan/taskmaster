@@ -1,19 +1,23 @@
 {
   "api": {
-    "amplifyDatasource": {
+    "shamikhapp": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2022-11-27T18:00:03.179Z",
-              "description": "shamikhquraan"
+              "apiKeyExpirationDays": 10,
+              "apiKeyExpirationDate": "2021-12-14T15:51:03.671Z",
+              "description": "shammikkk"
             }
-          }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
         }
       }
     }

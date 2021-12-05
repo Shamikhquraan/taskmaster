@@ -7,36 +7,36 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/goAddTask"
+        android:id="@+id/button_addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="16dp"
         android:text="Add Task"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.828" />
+        app:layout_constraintVertical_bias="0.521" />
 
     <Button
-        android:id="@+id/goAllTask"
+        android:id="@+id/button_allButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="goAllTask"
+        android:text="All Tasks"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.828" />
+        app:layout_constraintVertical_bias="0.521" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="249dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="72dp"
+        android:layout_height="255dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172"
         app:srcCompat="@android:drawable/ic_menu_today"
         tools:srcCompat="@android:drawable/ic_menu_today" />
 
@@ -44,10 +44,11 @@
         android:id="@+id/home_page_userName"
         android:layout_width="251dp"
         android:layout_height="36dp"
-        android:layout_marginTop="348dp"
-        android:text="User's Tasks"
+        android:layout_marginTop="412dp"
+        android:text="Account"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,34 +56,36 @@
         android:id="@+id/textView"
         android:layout_width="123dp"
         android:layout_height="41dp"
-        android:layout_marginTop="16dp"
-        android:text="My Tasks"
+        android:layout_marginTop="40dp"
+        android:text="My Tasks:"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/goPageSettings"
+        android:id="@+id/button_settingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         android:text="Settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/goAllTask"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/goAddTask" />
+        app:layout_constraintEnd_toStartOf="@+id/button_allButton"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toEndOf="@+id/button_addButton"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RV_main"
         android:layout_width="408dp"
         android:layout_height="189dp"
-        app:layout_constraintBottom_toTopOf="@+id/home_page_userName"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.488" />
+        app:layout_constraintTop_toBottomOf="@+id/home_page_userName"
+        app:layout_constraintVertical_bias="0.813">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

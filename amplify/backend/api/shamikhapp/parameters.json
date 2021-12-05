@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "shamikhapp",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2021-12-04T15:51:24.799Z"
+}

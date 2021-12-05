@@ -1,0 +1,14 @@
+type Team @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  tasks: [Task] @hasMany(indexName: "byTeam", fields: ["id"])
+}
+
+type Task @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  body: String
+  state: String
+  teamID: ID @index(name: "byTeam")
+}
+ 
