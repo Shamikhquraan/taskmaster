@@ -58,4 +58,4 @@
  ![](sighn-in.PNG)
 
  sign-out:
-  ![](sighn-up.PNG)
+  ![](sign-up.PNG)
