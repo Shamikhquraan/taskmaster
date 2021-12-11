@@ -46,3 +46,16 @@
  ![](13.PNG)
 
   ![](133.PNG)
+
+
+  ## lab33:
+### Adding auth by ammazon social providor 
+ ,  auth allows user keep tracking his/her tasks .
+ ### Made , 
+ made auth methot throug social providor , it taked 1 week to go well . 
+
+ sign-in :
+ ![](sighn-in.PNG)
+
+ sign-out:
+  ![](sighn-up.PNG)

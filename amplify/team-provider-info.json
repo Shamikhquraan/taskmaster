@@ -11,5 +11,23 @@
       "StackId": "arn:aws:cloudformation:us-east-1:034892735905:stack/amplify-shamikhapp-staging-150022/bdabee30-5449-11ec-9bed-0a2e4ef92ed3",
       "AmplifyAppId": "dc7l2kan1ysel"
     }
+  },
+  "newshamikh": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-shamikhapp-newshamikh-224905-authRole",
+      "UnauthRoleArn": "arn:aws:iam::034892735905:role/amplify-shamikhapp-newshamikh-224905-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::034892735905:role/amplify-shamikhapp-newshamikh-224905-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-shamikhapp-newshamikh-224905-deployment",
+      "UnauthRoleName": "amplify-shamikhapp-newshamikh-224905-unauthRole",
+      "StackName": "amplify-shamikhapp-newshamikh-224905",
+      "StackId": "arn:aws:cloudformation:us-east-1:034892735905:stack/amplify-shamikhapp-newshamikh-224905/9fbef230-59fa-11ec-833c-12c84be2afad",
+      "AmplifyAppId": "dc7l2kan1ysel"
+    },
+    "categories": {
+      "auth": {
+        "shamikhappe336c4c9e336c4c9": {}
+      }
+    }
   }
 }
