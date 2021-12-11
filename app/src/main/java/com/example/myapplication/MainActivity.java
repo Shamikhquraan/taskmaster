@@ -13,6 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.AmplifyException;
 import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.auth.AuthUserAttribute;
+import com.amplifyframework.auth.AuthUserAttributeKey;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
+import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.generated.model.Task;
@@ -30,18 +34,39 @@ public class MainActivity extends AppCompatActivity {
         try {
             Amplify.addPlugin( new AWSApiPlugin() );
             Amplify.addPlugin( new AWSDataStorePlugin() );
-            Amplify.configure( getApplicationContext() );
+            Amplify.addPlugin(new AWSCognitoAuthPlugin());
+            Amplify.configure(getApplicationContext());
             Log.i( "Tutorial", "Initialized Amplify" );
         } catch (AmplifyException failure) {
             Log.e( "Tutorial", "Could not initialize Amplify", failure );
         }
+        Amplify.Auth.signInWithWebUI(
+                this,
+                result -> Log.i("AuthQuickStart", result.toString()),
+                error -> Log.e("AuthQuickStart", error.toString())
+        );
         Amplify.DataStore.observe( Task.class,
                 started -> Log.i( "Tutorial", "Observation began." ),
                 change -> Log.i( "Tutorial", change.item().toString() ),
                 failure -> Log.e( "Tutorial", "Observation failed.", failure ),
                 () -> Log.i( "Tutorial", "Observation complete." )
         );
-
+//        ArrayList<AuthUserAttribute> attributes = new ArrayList<>();
+//        attributes.add(new AuthUserAttribute(AuthUserAttributeKey.email(), "my@email.com"));
+//        attributes.add(new AuthUserAttribute(AuthUserAttributeKey.phoneNumber(), "+15551234567"));
+//
+//        Amplify.Auth.signUp(
+//                "username",
+//                "Password123",
+//                AuthSignUpOptions.builder().userAttributes(attributes).build(),
+//                result -> Log.i("AuthQuickstart", result.toString()),
+//                error -> Log.e("AuthQuickstart", error.toString())
+//        );
+//        Amplify.Auth.confirmSignIn(
+//                "confirmation code received via SMS",
+//                result -> Log.i("AuthQuickstart", result.toString()),
+//                error -> Log.e("AuthQuickstart", error.toString())
+//        );
         List<Task> Tasks = new ArrayList();
         Amplify.DataStore.query(
                 Task.class,
